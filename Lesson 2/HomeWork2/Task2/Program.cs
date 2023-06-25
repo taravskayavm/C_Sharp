@@ -8,17 +8,17 @@ Console.Clear();
 int ReadInt(string message)
 {
     System.Console.Write(message);
-    int number = Convert.ToInt32(Console.ReadLine());   
-    return number;                                      
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
 }
 
-int digit = ReadInt ("Введите число => ");
+int digit = ReadInt("Введите число => ");
 if (digit > 99)
 {
     int thirdDigit = ((digit / 100)) % 10;
     System.Console.WriteLine($"Третья цифра числа {digit} равна {thirdDigit} ");
 }
 if (digit < 100)
-    {
-        Console.WriteLine("Третьей цифры нет");
-    }
+{
+    Console.WriteLine("Третьей цифры нет");
+}

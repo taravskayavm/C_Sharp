@@ -27,7 +27,7 @@ bool Validate3sign(int number)
     return true;
 }
 
-int digit = ReadInt ("Введите 3-хзначное число => ");
+int digit = ReadInt("Введите 3-хзначное число => ");
 if (Validate3sign(digit))
 {
     int secondDigit = (digit / 10) % 10;
