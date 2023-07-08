@@ -5,24 +5,23 @@
 
 Console.Clear();
 
-int[] GenerateArray(int len, int min, int max)
+int[] GenerateArray(int lenght, int start, int end)
 {
-    int[] array = new int[len];
+    int[] array = new int[lenght];
     Random rnd = new Random();
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = rnd.Next(min, max + 1);
+        array[i] = rnd.Next(start, end + 1);
     }
     return array;
 }
 
-void PrintArray(int[] array)
+void ShowArray(int[] arr)
 {
-    foreach (int item in array)
+    foreach (int item in arr)
     {
-        System.Console.Write(item + "\t");
+        System.Console.Write($"{item} ");
     }
-    System.Console.WriteLine();
 }
 
 int SumPositive(int[] array)
@@ -65,7 +64,8 @@ int SumPlus(int[] array, int sign)
 }
 
 int[] arr = GenerateArray(12, -9, 9);
-PrintArray(arr);
+ShowArray(arr);
+System.Console.WriteLine();
 System.Console.WriteLine($"Сумма положительных значений равна {SumPositive(arr)}");
 System.Console.WriteLine($"Сумма отрицательных значений равна {SumNegative(arr)}");
 System.Console.WriteLine($"Сумма положительных {SumPlus(arr, 1)}, а сумма отрицательных {SumPlus(arr, -1)}");
