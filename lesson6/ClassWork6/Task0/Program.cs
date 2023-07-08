@@ -40,7 +40,7 @@ int [] ReverseArray(int[] array) // Возращаем массив, котор�
 {
     for (int i = 0; i < array.Length / 2; i++)
     {
-        Swap(array, i, array.Length - 1 -i);
+        Swap1(array, i, array.Length - 1 -i);
     }
     return array;
 }
@@ -50,6 +50,11 @@ void Swap(int[] array, int i1, int i2)  // Функция, которая зам
     int temp = array[i1];       // Временная переменная
     array[i1] = array[i2];
     array[i2] = temp;
+}
+
+void Swap1 (int[] array, int i1, int i2) // Кортеж - другой способ Swap
+{
+    (array[i1], array[i2]) = (array[i2], array[i1]);
 }
 
 int len = ReadInt("Введите длину массива: ");
