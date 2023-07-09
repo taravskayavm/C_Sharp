@@ -32,7 +32,13 @@ int[] GenFib(int num)
     return array;
 }
 
-
+// Рекурсия
+void RecGenFib(int num1, int num2, int userNum)
+{
+    if (userNum == 0) return;
+    System.Console.Write($"{num1} ");
+    RecGenFib(num2, num1 + num2, userNum - 1);
+}
 
 void ShowArray(int[] arr)
 {
@@ -44,3 +50,5 @@ void ShowArray(int[] arr)
 
 int number = ReadInt("Введите число ");
 ShowArray(GenFib(number));
+System.Console.WriteLine();
+RecGenFib(0, 1, number);
