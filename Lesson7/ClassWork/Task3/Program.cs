@@ -62,4 +62,3 @@ int size = ReadInt("Введите размер массива ");
 int[,] array = CreateArr(size);
 ShowArray(array);
 System.Console.WriteLine($"Сумма элементов главной диагонали: {SumMainDiagArr(array)}");
-
