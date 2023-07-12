@@ -1,13 +1,11 @@
-﻿// Задача 4: Задайте двумерный массив. Введите элемент, и найдите первое его вхождение, 
-// выведите позиции по горизонтали и вертикали, или напишите, что такого элемента нет.
-// Например, такой массив:
+﻿// Задача 2. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
+// и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+// Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-
-// Введенный элемент 2, результат: [1, 4]
-
-// Введенный элемент 6, результат: такого элемента нет.
+// 17 -> такого числа в массиве нет
 
 Console.Clear();
 
@@ -51,30 +49,19 @@ int ReadInt(string message)
     return 0;
 }
 
-(int, int) FindElement(int[,] arr, int number)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (arr[i, j] == number) return (i, j);
-        }
-    }
-    return (-1, -1);
-}
-
 int rows = ReadInt("Введите число строк ");
 int columns = ReadInt("Введите число столбцов ");
 int[,] array = CreateArr(rows, columns);
 ShowArray(array);
-int num = ReadInt("Введите элемент для поиска");
+
+int elementsRow = ReadInt("Введите номер строки искомого элемента");
 System.Console.WriteLine();
-(int r, int c) = FindElement(array, num);
-if (r == -1)
-{
-    System.Console.WriteLine($"Введенный элемент {num} не найден");
-}
+int elementsColumn = ReadInt("Введите номер столбца искомого элемента");
+System.Console.WriteLine();
+if (elementsRow > rows && elementsColumn > columns)
+    Console.WriteLine("Такого элемента в массиве нет");
 else
 {
-    System.Console.WriteLine($"Введенный элемент {num}, результат: {FindElement(array, num)}");
+    object FindElement = array.GetValue(elementsRow, elementsColumn);
+    Console.WriteLine(FindElement);
 }
