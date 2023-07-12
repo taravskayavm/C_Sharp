@@ -16,8 +16,7 @@ double[,] CreateArr(int rows, int columns)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = random.NextDouble() * 100;
-            Console.Write("{0,6:F2}", array[i, j]);
+            array[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
         }
     }
     return array;
