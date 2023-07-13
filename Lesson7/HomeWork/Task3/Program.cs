@@ -40,14 +40,19 @@ int ReadInt(string message)
     {
         return convertedInt;
     }
-
     System.Console.WriteLine("Вы ввели не число");
     Environment.Exit(0);
     return 0;
 }
 
-int[,] averageEveryColumn(int[,] array)
+int rows = ReadInt("Введите число строк ");
+int columns = ReadInt("Введите число столбцов ");
+int[,] array = CreateArr(rows, columns);
+ShowArray(array);
+
+double averageEveryColumn(int[,] array)
 {
+    double sum = 0;
     double average = 0;
     for (int j = 0; j < array.GetLength(1); j++)
     {
@@ -55,12 +60,11 @@ int[,] averageEveryColumn(int[,] array)
         {
             average = (average + array[i, j]);
         }
+        average = average / columns;
     }
-    return array;
+    System.Console.WriteLine(sum);
+    System.Console.WriteLine(array.Length);
+    return ((int)(double)average);
 }
 
-int rows = ReadInt("Введите число строк ");
-int columns = ReadInt("Введите число столбцов ");
-int[,] array = CreateArr(rows, columns);
-ShowArray(array);
 System.Console.WriteLine($"Среднее арифметическое каждого столбца: {averageEveryColumn(array):f2}");
