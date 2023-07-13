@@ -18,7 +18,7 @@ int[,] CreateArr(int rows, int columns)
     {
         for (int j = 0; j < arrayD2.GetLength(1); j++)
         {
-            arrayD2[i, j] = i + j;
+            arrayD2[i, j] = new Random().Next(0, 5);
         }
     }
     return arrayD2;
@@ -63,9 +63,32 @@ int FindMax(int[,] arr)
     return max;
 }
 
+// int FindMax(int[,] arr)
+// {
+//     int max = arr[0, 0];
+//     foreach (int item in arr)
+//     {
+//         if (item > max) max = item;
+//     }
+//     return max;
+// }
+
+double GetAverageArr(int[,] arr)
+{
+    int sum = 0;
+    foreach (int item in arr)
+    {
+        sum += item;
+    }
+    System.Console.WriteLine(sum);
+    System.Console.WriteLine(arr.Length);
+    return ((double)sum) / arr.Length;
+}
+
 int rows = ReadInt("Введите число строк ");
 int columns = ReadInt("Введите число столбцов ");
 int[,] array = CreateArr(rows, columns);
 ShowArray(array);
 System.Console.WriteLine();
 System.Console.WriteLine($"Максимальный элемент массива {FindMax(array)}");
+System.Console.WriteLine($"Среднее арифметическое {GetAverageArr(array):f2}");

@@ -14,7 +14,7 @@ int[,] CreateArr(int rows, int columns)
     {
         for (int j = 0; j < arrayD2.GetLength(1); j++)
         {
-            arrayD2[i, j] = new Random().Next(0, 255);
+            arrayD2[i, j] = new Random().Next(0, 5);
         }
     }
     return arrayD2;
@@ -63,4 +63,4 @@ int rows = ReadInt("Введите число строк ");
 int columns = ReadInt("Введите число столбцов ");
 int[,] array = CreateArr(rows, columns);
 ShowArray(array);
-System.Console.WriteLine($"Среднее арифметическое каждого столбца: {averageEveryColumn(array)}");
+System.Console.WriteLine($"Среднее арифметическое каждого столбца: {averageEveryColumn(array):f2}");
