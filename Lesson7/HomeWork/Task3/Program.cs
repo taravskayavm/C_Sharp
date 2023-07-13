@@ -6,65 +6,46 @@
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-int[,] CreateArr(int rows, int columns)
-{
-    int[,] arrayD2 = new int[rows, columns];
+Console.WriteLine("Введите количество строк массива:");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите количество столбцов массива:");
+int m = Convert.ToInt32(Console.ReadLine());
 
-    for (int i = 0; i < arrayD2.GetLength(0); i++)
-    {
-        for (int j = 0; j < arrayD2.GetLength(1); j++)
-        {
-            arrayD2[i, j] = new Random().Next(0, 5);
-        }
-    }
-    return arrayD2;
-}
-
-void ShowArray(int[,] array)
+void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            System.Console.Write($"{array[i, j]}\t");
+            Console.Write(array[i, j] + " ");
         }
-        System.Console.WriteLine();
+        Console.WriteLine("");
     }
 }
 
-int ReadInt(string message)
-{
-    System.Console.Write($"{message} > ");
-    string inputedString = Console.ReadLine();
-    if (int.TryParse(inputedString, out int convertedInt))
-    {
-        return convertedInt;
-    }
-    System.Console.WriteLine("Вы ввели не число");
-    Environment.Exit(0);
-    return 0;
-}
+int[,] numbers = new int[n, m];
+FillArrayRandomNumbers(numbers);
 
-int rows = ReadInt("Введите число строк ");
-int columns = ReadInt("Введите число столбцов ");
-int[,] array = CreateArr(rows, columns);
-ShowArray(array);
-
-double averageEveryColumn(int[,] array)
+for (int j = 0; j < numbers.GetLength(1); j++)
 {
-    double sum = 0;
     double average = 0;
-    for (int j = 0; j < array.GetLength(1); j++)
+    for (int i = 0; i < numbers.GetLength(0); i++)
     {
-        for (int i = 0; i < array.GetLength(0); i++)
-        {
-            average = (average + array[i, j]);
-        }
-        average = average / columns;
+        average = (average + numbers[i, j]);
     }
-    System.Console.WriteLine(sum);
-    System.Console.WriteLine(array.Length);
-    return ((int)(double)average);
+    average = average / numbers.GetLength(0);
+    Console.Write(average + "; ");
 }
+Console.WriteLine();
+PrintArray(numbers);
 
-System.Console.WriteLine($"Среднее арифметическое каждого столбца: {averageEveryColumn(array):f2}");
+void FillArrayRandomNumbers(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(0, 10);
+        }
+    }
+}
