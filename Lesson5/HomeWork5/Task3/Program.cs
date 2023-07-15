@@ -2,7 +2,7 @@
 // [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
 Console.Clear();
 
-Console.Write(«Введите количество элементов массива: «);
+Console.Write("Введите количество элементов массива: ");
 int a = Convert.ToInt32(Console.ReadLine());
 double[] randomArray = new double[a];
 
@@ -12,7 +12,7 @@ Random rand = new Random();
 for (int i = 0; i < a; i++)
 {
 randomArray[i] = rand.NextDouble();
-Console.Write($»{randomArray[i]:F2} «);
+Console.Write($"{randomArray[i]:F2} ");
 }
 
 }
@@ -34,4 +34,4 @@ return max-min;
 }
 
 mas(a);
-Console.Write($»\nРазница между максимальным и минимальным элементов массива: {raz(randomArray):F2}»);
+Console.Write($"\nРазница между максимальным и минимальным элементов массива: {raz(randomArray):F2}");

@@ -1,20 +1,24 @@
-// Задача 2: Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы. 
+﻿// Задача 2: Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы. 
 // В случае, если это невозможно, программа должна вывести сообщение для пользователя.
+
 
 Console.Clear();
 
-int[,] CreateArr(int size)
+int[,] CreateArr()
 {
-    int[,] arrayD2 = new int[size, size];
+    Random rnd = new Random();
+    int rows = 4;
+    int cols = 4;
+    int[,] array = new int[rows, cols];
 
-    for (int i = 0; i < arrayD2.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < arrayD2.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            arrayD2[i, j] = new Random().Next(0, 5);
+            array[i, j] = rnd.Next(0, 10);
         }
     }
-    return arrayD2;
+    return array;
 }
 
 void ShowArray(int[,] array)
@@ -29,27 +33,49 @@ void ShowArray(int[,] array)
     }
 }
 
-int ReadInt(string message)
+void ShowAverageValues(double[] array)
 {
-    System.Console.Write($"{message} > ");
-    string inputedString = Console.ReadLine();
-    if (int.TryParse(inputedString, out int convertedInt))
+    for (int i = 0; i < array.Length; i++)
     {
-        return convertedInt;
+        System.Console.Write($"{array[i]:f1}\t");
     }
 }
 
-int SumMainDiagArr(int[,] array)
+int[,] ReverseArray(int[,] array)
 {
-    int sum = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
+    int rows = array.GetLength(0);
+    int columns = array.GetLength(1);
+    int[,] result = new int[columns, rows];
+    for (int i = 0; i < rows; i++)
     {
-        sum += array[i, i];
+        for (int j = 0; j < columns; j++)
+        {
+            result[j, i] = array[i, j];
+        }
     }
-    return sum;
+    return result;
 }
 
-int size = ReadInt("Введите размер массива ");
-int[,] array = CreateArr(size);
+int[,] TransparentArr(int[,] arr)
+{
+    int temp;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = i; j < arr.GetLength(1); j++)
+        {
+
+            temp = arr[i, j];
+            arr[i, j] = arr[j, i];
+            arr[j, i] = temp;
+        }
+    }
+    return arr;
+}
+
+int[,] array = CreateArr();
 ShowArray(array);
-System.Console.WriteLine($"Сумма элементов главной диагонали: {SumMainDiagArr(array)}");
+System.Console.WriteLine();
+int[,] reverse = ReverseArray(array);
+ShowArray(reverse);
+System.Console.WriteLine();
+ShowArray(TransparentArr(array));

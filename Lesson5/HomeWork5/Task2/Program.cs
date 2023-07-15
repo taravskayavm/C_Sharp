@@ -3,7 +3,7 @@
 // [-4, -6, 89, 6] -> 0
 Console.Clear();
 
-Console.Write(«Введите количество элементов массива: «);
+Console.Write("Введите количество элементов массива: ");
 int a = Convert.ToInt32(Console.ReadLine());
 int[] randomArray = new int[a];
 
@@ -12,7 +12,7 @@ void mas(int a)
 for (int i = 0; i < a; i++)
 {
 randomArray[i] = new Random().Next(1,9);
-Console.Write(randomArray[i] + » «);
+Console.Write(randomArray[i] + "");
 }
 
 }
@@ -30,4 +30,4 @@ return sum;
 }
 
 mas(a);
-Console.Write($»\nCумма элементов, стоящих на нечётных позициях: {kol(randomArray)}»);
+Console.Write($"\nCумма элементов, стоящих на нечётных позициях: {kol(randomArray)}");

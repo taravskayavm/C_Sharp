@@ -32,8 +32,7 @@ bool ValidateCoords(int x1, int y1)
     if (x1 == 0 || y1 == 0)
     {
         System.Console.WriteLine("Одна из координат равно 0");
-        return false;
-    }
+    } return false;
 }
 
 int x = Prompt("Введение X");
